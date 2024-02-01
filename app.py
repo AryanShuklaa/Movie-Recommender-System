@@ -4,11 +4,6 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
-# Load similarity data from the cloud (Google Drive in this example)
-similarity_url = "https://drive.google.com/uc?id=1T6e_cmBZQrmGEAWE4EQZ1kB7P38vV6bq"
-similarity_data = requests.get(similarity_url).content
-similarity = pickle.loads(similarity_data)
-
 # Create a session with retry strategy to handle connection errors
 session = requests.Session()
 retry_strategy = Retry(
@@ -38,6 +33,7 @@ def fetch_poster(movie_id):
         # Handle unexpected exceptions
         st.error(f"An unexpected error occurred: {e}")
         return None
+
 
 # Load movie data and similarity matrix from pickle files
 movies = pickle.load(open("movies_list.pkl", 'rb'))
@@ -82,11 +78,6 @@ if st.button("Show Recommend"):
         st.image(movie_poster[2])
     with col4:
         st.text(movie_name[3])
-        st.image(movie_poster[3])
-    with col5:
-        st.text(movie_name[4])
-        st.image(movie_poster[4])
-
         st.image(movie_poster[3])
     with col5:
         st.text(movie_name[4])
