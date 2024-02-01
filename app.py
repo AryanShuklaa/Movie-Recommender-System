@@ -5,7 +5,7 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
 # Load similarity data from the cloud (Google Drive in this example)
-similarity_url = "https://drive.google.com/file/d/1T6e_cmBZQrmGEAWE4EQZ1kB7P38vV6bq/view?usp=sharing"
+similarity_url = "https://drive.google.com/uc?id=1T6e_cmBZQrmGEAWE4EQZ1kB7P38vV6bq"
 similarity_data = requests.get(similarity_url).content
 similarity = pickle.loads(similarity_data)
 
